@@ -1,0 +1,10 @@
+{
+	"welcomeLabel": "HackaOS :: Install",
+	"filesToDownload": [
+		"augmentations/graft.js",
+		"augmentations/infos.js"
+	],
+	"filesToClean": [
+	],
+	"installerVersion": 1
+}
