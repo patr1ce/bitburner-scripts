@@ -32,7 +32,7 @@
 		"sleeves/crime.js",
 		"sleeves/init.js",
 		"sleeves/train.js",
-		"sleeves/work.js",
+		"sleeves/work.js"
 	],
 	"filesToClean": [
 	],
