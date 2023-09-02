@@ -9,7 +9,7 @@ export async function main(ns) {
 
 	await downloadFiles(ns, filesToDownload);
 
-	ns.tprintf("Install complete!)
+	ns.tprintf("Install complete!")
 }
 
 async function init(ns){
