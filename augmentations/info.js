@@ -102,9 +102,9 @@ export function reportOnPlayer(ns) {
 
 export function getAllAugmentations(ns) {
     const augs = {};
-    // const factions = ns.getPlayer().factions;
+    const factions = ns.getPlayer().factions;
     for (const faction of ALL_FACTIONS) {
-        for (const augName of ns.getAugmentationsFromFaction(faction)) {
+        for (const augName of ns.singularity.getAugmentationsFromFaction(faction)) {
             augs[augName] ||= getAugmentationInfo(ns, augName);
         }
     }
@@ -114,14 +114,14 @@ export function getAllAugmentations(ns) {
 export function getAugmentationInfo(ns, augName) {
     const aug = {};
     aug.name = augName;
-    aug.installed = ns.getOwnedAugmentations().includes(aug.name);
-    aug.purchased = !aug.installed && ns.getOwnedAugmentations(true).includes(aug.name);
+    aug.installed = ns.singularity.getOwnedAugmentations().includes(aug.name);
+    aug.purchased = !aug.installed && ns.singularity.getOwnedAugmentations(true).includes(aug.name);
 
-    aug.repReq = ns.getAugmentationRepReq(aug.name);
-    aug.price = ns.getAugmentationPrice(aug.name);  // TODO: estimate future prices with MultipleAugMultiplier = 1.9;
-    aug.prereqs = ns.getAugmentationPrereq(aug.name);
+    aug.repReq = ns.singularity.getAugmentationRepReq(aug.name);
+    aug.price = ns.singularity.getAugmentationPrice(aug.name);  // TODO: estimate future prices with MultipleAugMultiplier = 1.9;
+    aug.prereqs = ns.singularity.getAugmentationPrereq(aug.name);
 
-    aug.stats = ns.getAugmentationStats(aug.name);
+    aug.stats = ns.singularity.getAugmentationStats(aug.name);
     aug.value = getAugmentationValue(ns, aug);
 
     aug.factions = getAugmentationFactions(ns, aug.name);
@@ -143,8 +143,8 @@ export function isAugmentationSpecial(aug) {
 export function getAugmentationFactions(ns, augName) {
     const factions = {};
     for (const faction of ALL_FACTIONS) {
-        if (ns.getAugmentationsFromFaction(faction).includes(augName)) {
-            factions[faction] = [ns.getFactionRep(faction), ns.getAugmentationRepReq(augName)];
+        if (ns.singularity.getAugmentationsFromFaction(faction).includes(augName)) {
+            factions[faction] = [ns.singularity.getFactionRep(faction), ns.singularity.getAugmentationRepReq(augName)];
         }
     }
     return factions;
@@ -174,11 +174,11 @@ export const DOMAINS = {
 export function estimateHackingValue(aug) {
     const stats = aug.stats;
     let value = (
-        (stats.hacking_mult || 1) *
-        Math.sqrt(stats.hacking_exp_mult || 1) *
-        Math.sqrt(stats.hacking_chance_mult || 1) *
-        ((stats.hacking_money_mult || 1) + (stats.hacking_grow_mult || 1) - 1) *
-        (stats.hacking_speed_mult || 1)
+        (stats.hacking || 1) *
+        Math.sqrt(stats.hacking_exp || 1) *
+        Math.sqrt(stats.hacking_chance || 1) *
+        ((stats.hacking_money || 1) + (stats.hacking_grow || 1) - 1) *
+        (stats.hacking_speed || 1)
         
     );
     if (aug.name === "BitRunners Neurolink") {
