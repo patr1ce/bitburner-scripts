@@ -2,7 +2,37 @@
 	"welcomeLabel": "HackaOS :: Install",
 	"filesToDownload": [
 		"augmentations/graft.js",
-		"augmentations/infos.js"
+		"augmentations/infos.js",
+		"augmentations/buy.js",
+		"augmentations/unlock.js",
+
+		"batch/manage.js",
+		"batch/prep.js",
+
+		"botnet/stop.js",
+		"botnet/thread-pool.js",
+		"botnet/worker-grow.js",
+		"botnet/worker-hack.js",
+		"botnet/worker-weaken.js",
+		"botnet/worker.js",
+
+		"contracts/find-and-solve.js",
+		"contracts/solvers.js",
+
+		"corporation/init.js",
+		"corporation/buyback-shares.js",
+
+		"player/crime.js",
+		"player/info.js",
+		"player/train.js",
+		"player/tunnel.js",
+
+
+		"sleeves/buy-augs.js",
+		"sleeves/crime.js",
+		"sleeves/init.js",
+		"sleeves/train.js",
+		"sleeves/work.js",
 	],
 	"filesToClean": [
 	],
