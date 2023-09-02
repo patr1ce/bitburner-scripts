@@ -9,7 +9,7 @@ run /augmentations/graft.js [ hacking | charisma | combat | crime | faction | ha
 
 */
 
-import { DOMAINS, getAllAugmentations, averageValue } from "augmentations/info.js";
+import { DOMAINS, getAllAugmentations, averageValue } from "bitburner-scripts/augmentations/info.js";
 
 const FLAGS = [
     ['help', false],
@@ -32,6 +32,7 @@ export async function main(ns) {
         domains = ['all'];
     }
 
+
     if (flags.help) {
         ns.tprint([
             'List the best augmentations available to graft, sorted by (multipliers / time). Optionally graft them.',
@@ -49,10 +50,11 @@ export async function main(ns) {
         return;
     }
 
-    const graftableAugs = getGraftableAugs(ns, {domains});
+    const graftableAugs = getGraftableAugs(ns, {domains, canAfford: true});
     const summary = [`Augmentation Grafting Plan: ${domains.join(', ')}`];
     for (const aug of graftableAugs) {
         const price = sprintf("%10s", ns.nFormat(aug.price, "$0.0a"));
+        //summary.push("STATS >>>>> " + JSON.stringify(aug.stats, null, 2));
         summary.push(`${price} (${(aug.time/60/60/1000).toFixed(1)} hr) for (${aug.totalValue.toFixed(2)}x) '${aug.name}'`);
     }
     ns.print(summary.join("\n"), "\n");
@@ -102,7 +104,7 @@ export async function graftAugs(ns, domains) {
 
 export function getGraftableAugs(ns, {domains, canAfford}) {
     const allAugs = Object.values(getAllAugmentations(ns));
-    const ownedAugs = ns.getOwnedAugmentations(true);
+    const ownedAugs = ns.singularity.getOwnedAugmentations(true);
     const exclude = ["The Red Pill", "NeuroFlux Governor"];
 
     let graftableAugs = allAugs.filter((aug)=>(
@@ -139,7 +141,7 @@ export function estimateGraftValues(ns, aug) {
         value: {}
     };
     aug.stats = {};
-    for (const [key, value] of Object.entries(ns.getAugmentationStats(aug.name))) {
+    for (const [key, value] of Object.entries(ns.singularity.getAugmentationStats(aug.name))) {
         aug.stats[key] = value * EntropyEffect;
         // TODO: check whether 'cost' ones get inverted in future versions
     }
