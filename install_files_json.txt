@@ -1,5 +1,5 @@
 {
-	"welcomeLabel": "HackaOS :: Install",
+	"welcomeLabel": "Badass Scripts :: Install",
 	"filesToDownload": [
 		"augmentations/graft.js",
 		"augmentations/info.js",
