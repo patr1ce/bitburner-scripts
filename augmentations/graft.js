@@ -86,7 +86,7 @@ export async function graftAugs(ns, domains) {
             }
         }
         if (player.city !== "New Tokyo") {
-            ns.travelToCity("New Tokyo");
+            ns.singularity.travelToCity("New Tokyo");
         }
         const success = ns.grafting.graftAugmentation(aug.name);
         if (success) {
