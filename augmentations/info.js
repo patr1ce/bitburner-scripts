@@ -82,15 +82,15 @@ export function reportOnAugmentation(ns, augName) {
 export function reportOnPlayer(ns) {
     const report = [];
     const sourceFiles = {};
-    for (const sourceFile of ns.getOwnedSourceFiles().sort((a,b)=>a.n-b.n)) {
+    for (const sourceFile of ns.singularity.getOwnedSourceFiles().sort((a,b)=>a.n-b.n)) {
         sourceFiles[`SourceFile${sourceFile.n}`] = sourceFile.lvl;
     }
     report.push("Source Files: " + JSON.stringify(sourceFiles, null, 2));
 
-    const installedAugs = ns.getOwnedAugmentations(false);
+    const installedAugs = ns.singularity.getOwnedAugmentations(false);
     report.push("Installed Augmentations: " + JSON.stringify(installedAugs, null, 2));
 
-    const purchasedAugs = ns.getOwnedAugmentations(true).filter(function(aug){
+    const purchasedAugs = ns.singularity.getOwnedAugmentations(true).filter(function(aug){
         return !installedAugs.includes(aug);
     });
     report.push("Purchased Augmentations: " + JSON.stringify(purchasedAugs, null, 2));
