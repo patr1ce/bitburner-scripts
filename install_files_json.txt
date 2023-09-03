@@ -22,17 +22,70 @@
 		"corporation/init.js",
 		"corporation/buyback-shares.js",
 
+		"gang/ascend.js",
+		"gang/buy-augs.js",
+		"gang/info.js",
+		"gang/manage.js",
+
+		"hacking/batch-model.js",
+		"hacking/batch-view.js",
+		"hacking/do.js",
+		"hacking/manager.js",
+		"hacking/planner.js",
+		"hacking/prep.js",
+
+
+		"hacknet/nodes.js",
+		"hacknet/servers.js",
+		"hacknet/spend-hashes.js",
+
+		"inspect/bitnode.js",
+		"inspect/get-info.js",
+		"inspect/server.js",
+
+		"lib/box-drawing.js",
+		"lib/port-service.js",
+		
+		"net/buy-server.js",
+		"net/deploy-script.js",
+		"net/register-servers.js",
+		"net/server-list.js",
+		"net/upgrade-home-server.js",
+
 		"player/crime.js",
 		"player/info.js",
 		"player/train.js",
 		"player/tunnel.js",
+		"player/backdoor-servers.js",
+		"player/create-programs.js",
+		"player/join-factions.js",
+		"player/prestige.js",
 
+		"service/compute.js",
+		"service/hack-planning.js",
+		"service/server-info.js",
+		
+		"share/deploy.js",
+		"share/share.js",
 
 		"sleeves/buy-augs.js",
 		"sleeves/crime.js",
 		"sleeves/init.js",
 		"sleeves/train.js",
-		"sleeves/work.js"
+		"sleeves/work.js",
+
+		"stanek/charge-x-y.js",
+		"stanek/deploy.js",
+		"stanek/info.js",
+		"stanek/respect.js",
+
+		"stocks/companies.js",
+		"stocks/sell.js",
+		"stocks/trader.js",
+
+		"init.js"
+
+
 	],
 	"filesToClean": [
 	],
