@@ -10,7 +10,7 @@ export async function main(ns) {
     const factions = player.factions;
     player.factions = {};
     for (const f of factions) {
-        player.factions[f] = `${ns.getFactionFavor(f)} favor, ${parseInt(ns.getFactionRep(f))} rep`;
+        player.factions[f] = `${ns.singularity.getFactionFavor(f)} favor, ${parseInt(ns.singularity.getFactionRep(f))} rep`;
     }
 
     ns.clearLog();
