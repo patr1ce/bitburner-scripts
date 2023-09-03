@@ -2,7 +2,7 @@
 	"welcomeLabel": "HackaOS :: Install",
 	"filesToDownload": [
 		"augmentations/graft.js",
-		"augmentations/infos.js",
+		"augmentations/info.js",
 		"augmentations/buy.js",
 		"augmentations/unlock.js",
 
